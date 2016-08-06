@@ -6,6 +6,9 @@ import React, {
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
+require('normalize.css/normalize.css');
+require('styles/App.css');
+
 @connect(() => ({ }), { pushState: push })
 export default class App extends Component {
   static propTypes = {

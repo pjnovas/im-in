@@ -9,5 +9,5 @@ npm install
 ## Start Hot reload
 
 ```
-npm serve
+npm start
 ```

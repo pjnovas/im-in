@@ -1,28 +1,35 @@
 import React, {
-  Component,
-  PropTypes
+  Component
 } from 'react';
 
 import { connect } from 'react-redux';
-//import Main from '../components/Main';
-//import { increase, decrease } from '../actions/count'
+import { create } from '../actions/meeting';
+import CreateMeeting from '../components/meeting/Create';
 
-/*
-@connect( store => {
-    match: store.match
-  }, { increase, decrease })
-*/
-
-@connect( store => ({ match: store.match }), {})
+@connect( store => ({
+  meeting: store.meeting
+}), {
+  create
+})
 export default class Home extends Component {
+
+  onCreate(data){
+    console.dir(data);
+    //this.props.create(data);
+  }
+
+  onSuccess(){
+    console.log('go to the meeting page');
+  }
+
   render() {
-    //const { /*actions, */match } = this.props;
-    return <h1>Heeey</h1>;
+    return (
+      <CreateMeeting
+        onSubmit={this.onCreate}
+        onSuccess={this.onSuccess}
+        submitting={this.props.meeting.creating}/>
+    );
   }
 }
 
-Home.propTypes = {
-  //actions: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired
-};
+Home.propTypes = {};
