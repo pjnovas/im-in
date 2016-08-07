@@ -5,13 +5,9 @@ import React, {
 import { connect } from 'react-redux';
 import { create } from '../actions/event';
 import { push } from 'react-router-redux';
-import CreateEvent from '../components/event/Create';
+import EventForm from '../components/event/Form';
 
-@connect( store => ({
-  state: store.event
-}), {
-  create, push
-})
+@connect( store => ({ state: store.event }), { create, push })
 export default class Home extends Component {
 
   componentWillReceiveProps(nextProps) {
@@ -27,7 +23,7 @@ export default class Home extends Component {
     } = this.props;
 
     return (
-      <CreateEvent
+      <EventForm
         onSubmit={data => create(data)}
         submitting={state.creating}/>
     );
@@ -35,4 +31,3 @@ export default class Home extends Component {
 }
 
 Home.propTypes = {};
-//onSuccess={() => push('/' + state.createdId)}

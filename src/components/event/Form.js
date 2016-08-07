@@ -8,11 +8,11 @@ import validate from './validator';
 require('styles/event/Create.sass');
 
 @reduxForm({
-  form: 'event-full',
+  form: 'event-form',
   fields: [ 'title', 'info', 'owner', 'datetime', 'max', 'location' ],
   validate
 })
-export default class CreateEvent extends Component {
+export default class FormEvent extends Component {
   render() {
     let {
       fields: { title, info, owner, datetime, max, location },
@@ -80,9 +80,9 @@ export default class CreateEvent extends Component {
   }
 }
 
-CreateEvent.displayName = 'CreateEvent';
+FormEvent.displayName = 'FormEvent';
 
-CreateEvent.propTypes = {
+FormEvent.propTypes = {
   //fields: PropTypes.object.isRequired,
   //handleSubmit: PropTypes.func.isRequired,
   //submitting: PropTypes.bool.isRequired

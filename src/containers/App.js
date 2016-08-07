@@ -4,16 +4,14 @@ import React, {
 } from 'react';
 
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
 
 require('normalize.css/normalize.css');
 require('styles/App.css');
 
-@connect(() => ({ }), { pushState: push })
+@connect(() => ({ }), { })
 export default class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
-    pushState: PropTypes.func.isRequired,
     location: PropTypes.shape({
       pathname: PropTypes.string
     })

@@ -8,6 +8,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 
 import App from './containers/App';
 import Home from './containers/Home';
+import Event from './containers/Event';
 
 import { setLocale } from './locale';
 setLocale('es');
@@ -19,7 +20,7 @@ render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <Route key="xxx" path="/home" component={Home}/>
+        <Route key="event-details" path="/:eventId" component={Event}/>
         <IndexRoute component={Home}/>
       </Route>
     </Router>

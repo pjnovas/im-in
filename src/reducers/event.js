@@ -1,25 +1,40 @@
 import {
-  CREATE_EVENT_PENDING,
-  CREATE_EVENT_FULFILLED,
-  CREATE_EVENT_REJECTED
+  EVENT_CREATE_PENDING,
+  EVENT_CREATE_FULFILLED,
+  EVENT_CREATE_REJECTED,
+  EVENT_FETCH_PENDING,
+  EVENT_FETCH_FULFILLED,
+  EVENT_FETCH_REJECTED
 } from '../constants';
 
 const initialState = {
   creating: false,
   created: false,
-  createdId: null
+  createdId: null,
+  fetching: false,
+  fetched: false,
+  event: null
 };
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case CREATE_EVENT_PENDING: {
+    case EVENT_CREATE_PENDING: {
       return {...state, creating: true};
     }
-    case CREATE_EVENT_FULFILLED: {
+    case EVENT_CREATE_FULFILLED: {
       return {...state, creating: false, created: true, createdId: action.payload.data.id};
     }
-    case CREATE_EVENT_REJECTED: {
+    case EVENT_CREATE_REJECTED: {
       return {...state, creating: false, error: action.payload.response.data};
+    }
+    case EVENT_FETCH_PENDING: {
+      return {...state, fetching: true };
+    }
+    case EVENT_FETCH_FULFILLED: {
+      return {...state, fetching: false, fetched: true, event: action.payload.data};
+    }
+    case EVENT_FETCH_REJECTED: {
+      return {...state, fetching: false, error: action.payload.response.data};
     }
   }
 
