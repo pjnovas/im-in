@@ -5,9 +5,9 @@ import {
 } from '../constants';
 
 const initialState = {
-  meeting: {},
   creating: false,
-  created: false
+  created: false,
+  createdId: null
 };
 
 export default function(state = initialState, action) {
@@ -16,8 +16,7 @@ export default function(state = initialState, action) {
       return {...state, creating: true};
     }
     case CREATE_MEETING_FULFILLED: {
-      return {...state,
-        creating: false, created: true, meeting: action.payload.data};
+      return {...state, creating: false, created: true, createdId: action.payload.data.id};
     }
     case CREATE_MEETING_REJECTED: {
       return {...state, creating: false, error: action.payload.response.data};

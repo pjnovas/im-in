@@ -9,6 +9,9 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import App from './containers/App';
 import Home from './containers/Home';
 
+import { setLocale } from './locale';
+setLocale('es');
+
 const store = createStore(browserHistory, window.__data);
 const history = syncHistoryWithStore(browserHistory, store);
 

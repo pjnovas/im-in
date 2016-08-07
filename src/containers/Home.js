@@ -4,32 +4,35 @@ import React, {
 
 import { connect } from 'react-redux';
 import { create } from '../actions/meeting';
+import { push } from 'react-router-redux';
 import CreateMeeting from '../components/meeting/Create';
 
 @connect( store => ({
-  meeting: store.meeting
+  state: store.meeting
 }), {
-  create
+  create, push
 })
 export default class Home extends Component {
 
-  onCreate(data){
-    console.dir(data);
-    //this.props.create(data);
-  }
-
-  onSuccess(){
-    console.log('go to the meeting page');
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.state.created){
+      this.props.push('/' + nextProps.state.createdId);
+    }
   }
 
   render() {
+    let {
+      create,
+      state
+    } = this.props;
+
     return (
       <CreateMeeting
-        onSubmit={this.onCreate}
-        onSuccess={this.onSuccess}
-        submitting={this.props.meeting.creating}/>
+        onSubmit={data => create(data)}
+        submitting={state.creating}/>
     );
   }
 }
 
 Home.propTypes = {};
+//onSuccess={() => push('/' + state.createdId)}
