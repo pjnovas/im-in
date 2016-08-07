@@ -2,10 +2,10 @@ import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
 
 import {reducer as form} from 'redux-form';
-import meeting from './meeting';
+import event from './event';
 
 export default combineReducers({
   routing,
   form,
-  meeting
+  event
 });

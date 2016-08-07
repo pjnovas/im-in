@@ -3,12 +3,12 @@ import React, {
 } from 'react';
 
 import { connect } from 'react-redux';
-import { create } from '../actions/meeting';
+import { create } from '../actions/event';
 import { push } from 'react-router-redux';
-import CreateMeeting from '../components/meeting/Create';
+import CreateEvent from '../components/event/Create';
 
 @connect( store => ({
-  state: store.meeting
+  state: store.event
 }), {
   create, push
 })
@@ -27,7 +27,7 @@ export default class Home extends Component {
     } = this.props;
 
     return (
-      <CreateMeeting
+      <CreateEvent
         onSubmit={data => create(data)}
         submitting={state.creating}/>
     );

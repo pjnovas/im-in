@@ -1,7 +1,7 @@
 import {
-  CREATE_MEETING_PENDING,
-  CREATE_MEETING_FULFILLED,
-  CREATE_MEETING_REJECTED
+  CREATE_EVENT_PENDING,
+  CREATE_EVENT_FULFILLED,
+  CREATE_EVENT_REJECTED
 } from '../constants';
 
 const initialState = {
@@ -12,13 +12,13 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case CREATE_MEETING_PENDING: {
+    case CREATE_EVENT_PENDING: {
       return {...state, creating: true};
     }
-    case CREATE_MEETING_FULFILLED: {
+    case CREATE_EVENT_FULFILLED: {
       return {...state, creating: false, created: true, createdId: action.payload.data.id};
     }
-    case CREATE_MEETING_REJECTED: {
+    case CREATE_EVENT_REJECTED: {
       return {...state, creating: false, error: action.payload.response.data};
     }
   }

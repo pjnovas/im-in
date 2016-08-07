@@ -6,13 +6,13 @@ module.exports = {
   "date_format": "DD\/MM\/YYYY",
   "colloquial_date_format": "ddd Do MMMM YYYY",
 
-  "meeting_create": "Crear",
-  "meeting_title": "Título",
-  "meeting_info": "Info",
-  "meeting_owner": "Creador",
-  "meeting_date": "Fecha",
-  "meeting_time": "Hora",
-  "meeting_max": "Máximo",
-  "meeting_location": "Lugar",
-  "meeting_submit": "Crear"
+  "event_create": "Crear",
+  "event_title": "Título",
+  "event_info": "Info",
+  "event_owner": "Creador",
+  "event_date": "Fecha",
+  "event_time": "Hora",
+  "event_max": "Máximo",
+  "event_location": "Lugar",
+  "event_submit": "Crear"
 };
