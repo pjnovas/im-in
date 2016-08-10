@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import validate from './validator';
 import DateTime from 'react-datetime';
+import Location from './Location';
 
 require('styles/event/Create.sass');
 
@@ -71,6 +72,7 @@ export default class FormEvent extends Component {
           <label>{__('event_location')}</label>
           <div>
             <input type="text" placeholder={__('event_location')} {...location}/>
+            <Location />
           </div>
           {location.touched && location.error && <div>{location.error}</div>}
         </div>
