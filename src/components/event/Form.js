@@ -4,6 +4,7 @@ import { __ } from '../../locale';
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import validate from './validator';
+import DateTime from 'react-datetime';
 
 require('styles/event/Create.sass');
 
@@ -51,7 +52,9 @@ export default class FormEvent extends Component {
         <div>
           <label>{__('event_date')}</label>
           <div>
-            <input type="text" placeholder={__('event_date')} {...datetime}/>
+            <DateTime input={false} {...datetime}
+              dateFormat={__('date_format')} timeFormat={__('time_format')}/>
+            {/*<input type="text" placeholder={__('event_date')} {...datetime}/>*/}
           </div>
           {datetime.touched && datetime.error && <div>{datetime.error}</div>}
         </div>
@@ -59,7 +62,7 @@ export default class FormEvent extends Component {
         <div>
           <label>{__('event_max')}</label>
           <div>
-            <input type="text" placeholder={__('event_max')} {...max}/>
+            <input type="number" placeholder={__('event_max')} {...max}/>
           </div>
           {max.touched && max.error && <div>{max.error}</div>}
         </div>

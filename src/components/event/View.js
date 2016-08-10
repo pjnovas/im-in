@@ -2,6 +2,7 @@
 
 import { __ } from '../../locale';
 import React, { Component } from 'react';
+import moment from 'moment';
 
 require('styles/event/View.sass');
 
@@ -27,7 +28,7 @@ export default class EventView extends Component {
 
         <div>
           <label>{__('event_date')}: </label>
-          {datetime}
+          {moment(datetime).format(__('datetime_format'))}
         </div>
 
         <div>

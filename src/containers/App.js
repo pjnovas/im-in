@@ -6,6 +6,7 @@ import React, {
 import { connect } from 'react-redux';
 
 require('normalize.css/normalize.css');
+require('react-datetime/css/react-datetime.css');
 require('styles/App.css');
 
 @connect(() => ({ }), { })
