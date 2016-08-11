@@ -96,6 +96,3 @@ export default class EventLocation extends Component {
 
 EventLocation.displayName = 'EventLocation';
 EventLocation.propTypes = { };
-/*
-
- */

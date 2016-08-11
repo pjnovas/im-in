@@ -1,16 +1,26 @@
 import config from 'config';
-import { get, post } from 'axios';
+import axios from 'axios';
+
+const baseCfg = {
+  baseURL: `${config.apiURL}`
+};
+
+const req = axios.create(Object.assign({}, baseCfg));
+
+const reqAuth = axios.create(Object.assign({}, baseCfg, {
+  headers: { 'Authorization': 'Bearer 1234' }
+}));
 
 export function create(event) {
   return {
     type: 'EVENT_CREATE',
-    payload: post(`${config.apiURL}/events`, event)
+    payload: reqAuth.post('/events', event)
   };
 }
 
 export function fetch(id) {
   return {
     type: 'EVENT_FETCH',
-    payload: get(`${config.apiURL}/events/${id}`)
+    payload: req.get(`/events/${id}`)
   };
 }
