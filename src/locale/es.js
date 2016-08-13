@@ -7,6 +7,11 @@ module.exports = {
   "datetime_format": "DD\/MM\/YYYY HH:mm",
   "colloquial_date_format": "ddd Do MMMM YYYY",
 
+  "login_title": "Ingreso",
+  "login_email": "Tu email",
+  "login": "Enviar",
+  "login_sent": "Enviado, revisa tu correo",
+
   "event_create": "Crear",
   "event_title": "Título",
   "event_info": "Info",

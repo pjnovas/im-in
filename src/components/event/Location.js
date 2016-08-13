@@ -1,8 +1,8 @@
 'use strict';
 
-import { __ } from '../../locale';
+//import { __ } from '../../locale';
 import React, { Component } from 'react';
-import { GoogleMapLoader, GoogleMap, Marker, SearchBox } from "react-google-maps";
+import { GoogleMapLoader, GoogleMap, Marker, SearchBox } from 'react-google-maps';
 
 require('styles/event/Location.sass');
 
@@ -62,10 +62,10 @@ export default class EventLocation extends Component {
     let props = this.props || {};
 
     return (
-      <section style={{height: "500px"}}>
+      <section style={{height: '500px'}}>
         <GoogleMapLoader
          containerElement={
-           <div {...props.containerElementProps} style={{ height: "100%"}}/>
+           <div {...props.containerElementProps} style={{ height: '100%'}}/>
          }
          googleMapElement={
            <GoogleMap
@@ -77,7 +77,6 @@ export default class EventLocation extends Component {
 
              <SearchBox
                bounds={this.state.bounds}
-               controlPosition={google.maps.ControlPosition.TOP_LEFT}
                onPlacesChanged={::this.handlePlacesChanged}
                ref="searchBox"
                placeholder="Customized your placeholder"

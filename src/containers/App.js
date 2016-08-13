@@ -4,23 +4,47 @@ import React, {
 } from 'react';
 
 import { connect } from 'react-redux';
+import { replace } from 'react-router-redux';
+import { login } from '../actions/auth';
+
+import { LOCAL_STORAGE_AUTH_TOKEN } from '../constants';
 
 require('normalize.css/normalize.css');
 require('react-datetime/css/react-datetime.css');
 require('styles/App.css');
 
-@connect(() => ({ }), { })
+
+@connect( store => ({ auth: store.auth }), { replace, login })
 export default class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     location: PropTypes.shape({
-      pathname: PropTypes.string
+      pathname: PropTypes.string,
+      query: PropTypes.object
     })
   };
 
   static contextTypes = {
     store: PropTypes.object.isRequired
   };
+
+  componentWillMount(){
+    let {
+      location: { query },
+      replace,
+      auth,
+      login
+    } = this.props;
+
+    if (query.token){
+      localStorage.setItem(LOCAL_STORAGE_AUTH_TOKEN, query.token);
+      replace('/');
+    }
+
+    if (!auth.isLoggedIn && localStorage.getItem(LOCAL_STORAGE_AUTH_TOKEN)){
+      return login();
+    }
+  }
 
   render() {
     return (
