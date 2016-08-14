@@ -9,6 +9,7 @@
 const path = require('path');
 const srcPath = path.join(__dirname, '/../src');
 const dfltPort = 8000;
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /**
  * Get the default modules object for webpack
@@ -25,24 +26,8 @@ function getDefaultModules() {
     ],
     loaders: [
       {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader'
-      },
-      {
-        test: /\.sass/,
-        loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded&indentedSyntax'
-      },
-      {
-        test: /\.scss/,
-        loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded'
-      },
-      {
-        test: /\.less/,
-        loader: 'style-loader!css-loader!less-loader'
-      },
-      {
-        test: /\.styl/,
-        loader: 'style-loader!css-loader!stylus-loader'
+        test: /(\.scss|\.css)$/,
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass')
       },
       {
         test: /\.(png|jpg|gif|woff|woff2)$/,

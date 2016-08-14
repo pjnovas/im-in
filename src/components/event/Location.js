@@ -4,8 +4,6 @@
 import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker, SearchBox } from 'react-google-maps';
 
-require('styles/event/Location.sass');
-
 export default class EventLocation extends Component {
 
   static inputStyle = {

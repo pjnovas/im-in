@@ -7,8 +7,6 @@ import validate from './validator';
 import DateTime from 'react-datetime';
 import Location from './Location';
 
-require('styles/event/Create.sass');
-
 @reduxForm({
   form: 'event-form',
   fields: [ 'category', 'title', 'info', 'owner', 'datetime', 'max', 'location' ],

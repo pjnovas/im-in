@@ -4,6 +4,7 @@ import React, {
 
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
+import { Button } from 'react-toolbox/lib/button';
 
 import Auth from './Auth';
 
@@ -14,6 +15,7 @@ export default class Home extends Component {
     return (
       <div>
         [Home Content]
+        <Button label='Primary Button' primary />
         <Auth />
       </div>
     );

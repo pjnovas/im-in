@@ -4,8 +4,6 @@ import { __ } from '../../locale';
 import React, { Component } from 'react';
 import moment from 'moment';
 
-require('styles/event/View.sass');
-
 export default class EventView extends Component {
   render() {
     let {

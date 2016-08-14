@@ -10,10 +10,8 @@ import { fetch as fetchCats } from '../actions/categories';
 
 import { LOCAL_STORAGE_AUTH_TOKEN } from '../constants';
 
-require('normalize.css/normalize.css');
-require('react-datetime/css/react-datetime.css');
-require('styles/App.css');
-
+//require('react-datetime/css/react-datetime.css');
+import 'react-toolbox/lib/commons.scss';
 
 @connect( store => ({ auth: store.auth }), { replace, login, fetchCats })
 export default class App extends Component {

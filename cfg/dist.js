@@ -6,8 +6,7 @@ let webpack = require('webpack');
 let baseConfig = require('./base');
 let defaultSettings = require('./defaults');
 
-// Add needed plugins here
-let BowerWebpackPlugin = require('bower-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 let config = Object.assign({}, baseConfig, {
   entry: path.join(__dirname, '../src/index'),
@@ -18,9 +17,7 @@ let config = Object.assign({}, baseConfig, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"'
     }),
-    new BowerWebpackPlugin({
-      searchResolveModulesDirectories: false
-    }),
+    new ExtractTextPlugin('app.css', { allChunks: true }),
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
