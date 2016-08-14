@@ -11,13 +11,14 @@ require('styles/event/Create.sass');
 
 @reduxForm({
   form: 'event-form',
-  fields: [ 'title', 'info', 'owner', 'datetime', 'max', 'location' ],
+  fields: [ 'category', 'title', 'info', 'owner', 'datetime', 'max', 'location' ],
   validate
 })
 export default class FormEvent extends Component {
   render() {
     let {
-      fields: { title, info, owner, datetime, max, location },
+      categories,
+      fields: { category, title, info, owner, datetime, max, location },
       handleSubmit,
       submitting
     } = this.props;
@@ -25,6 +26,18 @@ export default class FormEvent extends Component {
     return (
       <form onSubmit={handleSubmit}>
         <h2>{__('event_create')}</h2>
+
+        <div>
+          <label>{__('event_category')}</label>
+          <div>
+            <select>
+              {categories.map(cat =>
+                (<option key={cat} value={cat}>{__(`cat_${cat}`)}</option>)
+              )}
+            </select>
+          </div>
+          {category.touched && category.error && <div>{category.error}</div>}
+        </div>
 
         <div>
           <label>{__('event_title')}</label>

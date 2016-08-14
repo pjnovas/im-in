@@ -7,7 +7,10 @@ import { create } from '../actions/event';
 import { push } from 'react-router-redux';
 import EventForm from '../components/event/Form';
 
-@connect( store => ({ state: store.event }), { create, push })
+@connect( store => ({
+  state: store.event,
+  categories: store.categories
+}), { create, push })
 export default class NewEvent extends Component {
 
   componentWillReceiveProps(nextProps) {
@@ -19,11 +22,13 @@ export default class NewEvent extends Component {
   render() {
     let {
       create,
-      state
+      state,
+      categories
     } = this.props;
 
     return (
       <EventForm
+        categories={categories.list}
         onSubmit={data => create(data)}
         submitting={state.creating}/>
     );
