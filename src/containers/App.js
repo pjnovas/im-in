@@ -6,6 +6,7 @@ import React, {
 import { connect } from 'react-redux';
 import { replace } from 'react-router-redux';
 import { login } from '../actions/auth';
+import { fetch as fetchCats } from '../actions/categories';
 
 import { LOCAL_STORAGE_AUTH_TOKEN } from '../constants';
 
@@ -14,7 +15,7 @@ require('react-datetime/css/react-datetime.css');
 require('styles/App.css');
 
 
-@connect( store => ({ auth: store.auth }), { replace, login })
+@connect( store => ({ auth: store.auth }), { replace, login, fetchCats })
 export default class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
@@ -33,13 +34,16 @@ export default class App extends Component {
       location: { query },
       replace,
       auth,
-      login
+      login,
+      fetchCats
     } = this.props;
 
     if (query.token){
       localStorage.setItem(LOCAL_STORAGE_AUTH_TOKEN, query.token);
       replace('/');
     }
+
+    fetchCats();
 
     if (!auth.isLoggedIn && localStorage.getItem(LOCAL_STORAGE_AUTH_TOKEN)){
       return login();
