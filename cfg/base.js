@@ -3,6 +3,22 @@ let path = require('path');
 let defaultSettings = require('./defaults');
 const autoprefixer = require('autoprefixer');
 
+const aliasesKeys = [
+  'actions',
+  'containers',
+  'components',
+  'controls',
+  'constants',
+  'sources',
+  'stores',
+  'locale',
+  'utils',
+  'theme'
+];
+
+let aliases = {};
+aliasesKeys.forEach( aliase => aliases[aliase] = `${defaultSettings.srcPath}/${aliase}/` );
+
 let additionalPaths = [];
 
 module.exports = {
@@ -29,13 +45,9 @@ module.exports = {
       'node_modules',
       path.resolve(__dirname, './node_modules')
     ],
-    alias: {
-      actions: `${defaultSettings.srcPath}/actions/`,
-      components: `${defaultSettings.srcPath}/components/`,
-      sources: `${defaultSettings.srcPath}/sources/`,
-      stores: `${defaultSettings.srcPath}/stores/`,
+    alias: Object.assign(aliases, {
       config: `${defaultSettings.srcPath}/config/` + process.env.REACT_WEBPACK_ENV
-    }
+    })
   },
   module: {},
   postcss: [autoprefixer],

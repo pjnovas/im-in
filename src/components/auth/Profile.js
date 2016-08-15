@@ -1,6 +1,6 @@
 'use strict';
 
-//import { __ } from '../../locale';
+//import { __ } from 'locale';
 import React from 'react';
 
 //require('styles/event/Profile.sass');

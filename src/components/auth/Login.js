@@ -1,6 +1,6 @@
 'use strict';
 
-import { __ } from '../../locale';
+import { __ } from 'locale';
 import React, { Component } from 'react';
 
 //require('styles/event/Login.sass');

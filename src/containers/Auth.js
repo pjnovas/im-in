@@ -3,10 +3,10 @@ import React, {
 } from 'react';
 
 import { connect } from 'react-redux';
-import { sendToken, logout } from '../actions/auth';
+import { sendToken, logout } from 'actions/auth';
 
-import Login from '../components/auth/Login';
-import Profile from '../components/auth/Profile';
+import Login from 'components/auth/Login';
+import Profile from 'components/auth/Profile';
 
 @connect( store => ({ auth: store.auth }), { sendToken, logout })
 export default class Auth extends Component {

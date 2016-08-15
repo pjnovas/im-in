@@ -1,4 +1,4 @@
-import { req, reqAuth } from '../utils/request';
+import { req, reqAuth } from 'utils/request';
 
 export function sendToken(email) {
   return {

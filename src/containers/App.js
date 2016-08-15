@@ -5,12 +5,11 @@ import React, {
 
 import { connect } from 'react-redux';
 import { replace } from 'react-router-redux';
-import { login } from '../actions/auth';
-import { fetch as fetchCats } from '../actions/categories';
+import { login } from 'actions/auth';
+import { fetch as fetchCats } from 'actions/categories';
 
-import { LOCAL_STORAGE_AUTH_TOKEN } from '../constants';
+import { LOCAL_STORAGE_AUTH_TOKEN } from 'constants';
 
-//require('react-datetime/css/react-datetime.css');
 import 'react-toolbox/lib/commons.scss';
 
 @connect( store => ({ auth: store.auth }), { replace, login, fetchCats })

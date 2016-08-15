@@ -3,9 +3,9 @@ import React, {
 } from 'react';
 
 import { connect } from 'react-redux';
-import { create } from '../actions/event';
+import { create } from 'actions/event';
 import { push } from 'react-router-redux';
-import EventForm from '../components/event/Form';
+import EventForm from 'components/event/Form';
 
 @connect( store => ({
   state: store.event,

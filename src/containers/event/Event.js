@@ -3,9 +3,9 @@ import React, {
 } from 'react';
 
 import { connect } from 'react-redux';
-import { fetch } from '../actions/event';
+import { fetch } from 'actions/event';
 import { push } from 'react-router-redux';
-import EventView from '../components/event/View';
+import EventView from 'components/event/View';
 
 @connect( store => ({ state: store.event }), { fetch, push })
 export default class Event extends Component {
